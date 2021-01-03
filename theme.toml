@@ -1,0 +1,11 @@
+name = "plain_jane"
+license = "MIT"
+description = "A simple blog theme"
+homepage = "https://github.com/seailly/plain_jane"
+tags = ["blog"]
+features = ["blog"]
+min_version = "0.79.1"
+
+[author]
+  name = "Josh"
+  homepage = "https://seailly.github.io/"

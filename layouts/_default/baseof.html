@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+  <head>
+    <title>{{ if and (not .IsHome) (.Title) }}{{ .Params.Title }} - {{ end }}{{ .Site.Title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ "css/styles.css" | relURL}}" />
+    <link rel="shortcut icon" href="{{ . }}" />
+    {{ partial "meta" . }}
+  </head>
+  <body>
+    {{ partial "header" . }}
+    {{ partial "nav" . }}
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+    {{ partialCached "footer" . }}
+    <script src="{{ "js/scripts.js" | relURL }}"></script>
+    {{ if .Site.GoogleAnalytics }}
+        {{ template "_internal/google_analytics_async.html" . }}
+    {{ end }}
+  </body>
+</html>

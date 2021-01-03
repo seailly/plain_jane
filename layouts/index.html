@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <section>
+    <ul>
+      {{ $pages := where site.RegularPages "Type" "posts" }}
+      {{ $paginator := .Paginate $pages }}
+      {{ range $index, $page := $paginator.Pages }}
+        <li {{if eq $index 0}}class="first" {{end}}>
+          <article>
+            <a href="{{ $page.Permalink }}">
+              <h2>{{ .Title }}</h2>
+              <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">{{ .Date.Format "2 January 2006" }}</time>
+            </a>
+            <p>
+              {{ .Summary | plainify | safeHTML | truncate 400 }}
+            </p>
+            {{ if .Truncated }}
+              <a href="{{ .Permalink }}">More</a>
+            {{ end }}
+          </article>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ template "_internal/pagination.html" . }}
+{{ end }}

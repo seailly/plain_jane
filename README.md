@@ -1,0 +1,1 @@
+A simple [Hugo](https://gohugo.io) theme.
